@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiet Light — Words for Hard Seasons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12142A;
+    --bg-panel: #1B1E3B;
+    --gold: #D4A857;
+    --gold-soft: rgba(212,168,87,0.35);
+    --ink: #F1ECDF;
+    --ink-muted: #9AA0BE;
+    --rule: rgba(241,236,223,0.10);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(212,168,87,0.10), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:680px;margin:0 auto;padding:0 24px;}
+
+  header.site{
+    padding:88px 0 56px;
+    text-align:center;
+    position:relative;
+  }
+  .flame{
+    width:10px;height:10px;
+    margin:0 auto 28px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:
+      0 0 12px 4px var(--gold-soft),
+      0 0 40px 18px rgba(212,168,87,0.12);
+    animation:flicker 4.5s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{ opacity:1; transform:scale(1); }
+    45%{ opacity:0.75; transform:scale(0.9); }
+    55%{ opacity:0.9; transform:scale(1.05); }
+    70%{ opacity:0.8; transform:scale(0.95); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .flame{animation:none;}
+  }
+  h1.brand{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(2.1rem, 5vw, 2.8rem);
+    letter-spacing:0.01em;
+    margin:0 0 10px;
+  }
+  p.tagline{
+    font-family:'Inter', sans-serif;
+    font-weight:400;
+    font-size:0.95rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-muted);
+    margin:0;
+  }
+
+  main{padding-bottom:100px;}
+  .intro{
+    font-family:'Inter', sans-serif;
+    color:var(--ink-muted);
+    font-size:0.98rem;
+    text-align:center;
+    max-width:480px;
+    margin:0 auto 56px;
+  }
+  ul.catalogue{
+    list-style:none;
+    margin:0;
+    padding:0;
+    border-top:1px solid var(--rule);
+  }
+  li.entry{
+    border-bottom:1px solid var(--rule);
+  }
+  li.entry a.card{
+    display:block;
+    text-decoration:none;
+    padding:30px 4px;
+    transition:padding-left 0.25s ease, background 0.25s ease;
+  }
+  li.entry a.card:hover,
+  li.entry a.card:focus-visible{
+    padding-left:16px;
+    background:linear-gradient(90deg, rgba(212,168,87,0.06), transparent 70%);
+    outline:none;
+  }
+  li.entry a.card:focus-visible{
+    box-shadow:inset 2px 0 0 var(--gold);
+  }
+  .entry-meta{
+    font-family:'Inter', sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+  .entry-title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.5rem;
+    margin:0 0 8px;
+    color:var(--ink);
+  }
+  .entry-excerpt{
+    font-size:0.98rem;
+    color:var(--ink-muted);
+    margin:0;
+  }
+
+  footer.site{
+    text-align:center;
+    font-family:'Inter', sans-serif;
+    font-size:0.8rem;
+    color:var(--ink-muted);
+    padding:40px 0 60px;
+    opacity:0.6;
+  }
+
+  .article-view{display:none;}
+  body.reading .catalogue-view{display:none;}
+  body.reading .article-view{display:block;}
+
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Inter', sans-serif;
+    font-size:0.85rem;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--gold);
+    text-decoration:none;
+    margin:48px 0 40px;
+  }
+  .back-link:hover{text-decoration:underline;}
+
+  article.piece .entry-meta{margin-bottom:14px;}
+  article.piece h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(1.8rem, 4.5vw, 2.4rem);
+    line-height:1.15;
+    margin:0 0 36px;
+  }
+  article.piece h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.25rem;
+    color:var(--gold);
+    margin:40px 0 14px;
+  }
+  article.piece p{
+    font-size:1.08rem;
+    color:var(--ink);
+    margin:0 0 20px;
+  }
+  article.piece ul{
+    margin:0 0 20px;
+    padding-left:22px;
+  }
+  article.piece li{
+    margin-bottom:10px;
+    font-size:1.05rem;
+  }
+  article.piece li strong{color:var(--gold);}
+  article.piece{padding-bottom:60px;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site">
+    <div class="flame" aria-hidden="true"></div>
+    <h1 class="brand">Quiet Light</h1>
+    <p class="tagline">Words for whatever you're carrying</p>
+  </header>
+
+  <main>
+    <div class="catalogue-view">
+      <p class="intro">A small, growing collection of reflections for hard seasons — grief, exhaustion, waiting, and everything in between.</p>
+      <ul class="catalogue" id="catalogue-list"></ul>
+    </div>
+
+    <div class="article-view" id="article-view">
+      <a href="#" class="back-link" id="back-link">← Back to all reflections</a>
+      <article class="piece" id="article-content"></article>
+    </div>
+  </main>
+
+  <footer class="site">Quiet Light</footer>
+</div>
+
+<script>
+  const articles = [
+    {
+      slug: "behold-the-lamb",
+      date: "August 2026",
+      title: "Behold, the Lamb Is on the Throne",
+      excerpt: "Whatever you're carrying today, take a breath — you are not forgotten, and you are not alone in it.",
+      html: `
+        <p>Maybe you're reading this from a hospital chair. Maybe it's a quiet apartment after a breakup, a job you just lost, a grief that hasn't lifted, or a burden nobody else can see. Whatever you're carrying today, take a breath — you are not forgotten, and you are not alone in it.</p>
+
+        <h3>The Image Worth Holding Onto</h3>
+        <p>There's a striking picture in Scripture: a Lamb, standing in the very center of the throne of heaven (Revelation 5:6). Not a lion crushing everything in sight. Not a distant, untouchable ruler. A Lamb — vulnerable, familiar with suffering, and yet seated in the place of ultimate authority.</p>
+        <p>That image matters, because it tells you something about the nature of the One who reigns over your circumstances. He isn't a stranger to pain. He entered it. And from that place of having suffered, He now rules — which means your suffering is not happening far from His notice. It's happening in view of a throne occupied by someone who knows exactly what suffering costs.</p>
+
+        <h3>An Honest Word</h3>
+        <p>This isn't a call to pretend you're fine. Faith isn't the absence of tears; the Bible is full of people who wept, questioned, and even complained honestly to God — and were not condemned for it. If you're exhausted, angry, numb, or just barely hanging on, that's a real place to stand, and it's a place you're allowed to bring exactly as you are.</p>
+        <p>But here's the admonishment, gently offered: don't let today's pain write the whole story. Don't let a hard season convince you that you're abandoned. The same chapter that shows the Lamb on the throne also shows every tear eventually being wiped away (Revelation 21:4) — not ignored, not minimized, but <em>wiped away</em>, by hands that bled first.</p>
+
+        <h3>What to Do With That Today</h3>
+        <ul>
+          <li><strong>Name what you're carrying.</strong> Silence makes weight heavier. Say it out loud — to God, to a friend, to a counselor, to paper.</li>
+          <li><strong>Let yourself be held, not just told.</strong> Truth matters, but so does presence. Let someone sit with you.</li>
+          <li><strong>Take the next right step, not the whole staircase.</strong> You don't have to solve everything today. Just the next breath, the next hour.</li>
+          <li><strong>Remember you are seen.</strong> Not from a distance. From the throne — by One who has walked exactly where you're walking now.</li>
+        </ul>
+        <p>Whatever today holds, you are held too. The Lamb is on the throne, and He has not looked away from you.</p>
+      `
+    }
+  ];
+
+  const listEl = document.getElementById('catalogue-list');
+  const articleEl = document.getElementById('article-content');
+  const backLink = document.getElementById('back-link');
+
+  function renderList(){
+    listEl.innerHTML = articles.map(a => `
+      <li class="entry">
+        <a class="card" href="#${a.slug}">
+          <div class="entry-meta">${a.date}</div>
+          <h2 class="entry-title">${a.title}</h2>
+          <p class="entry-excerpt">${a.excerpt}</p>
+        </a>
+      </li>
+    `).join('');
+  }
+
+  function renderArticle(slug){
+    const a = articles.find(x => x.slug === slug);
+    if(!a) return false;
+    articleEl.innerHTML = `
+      <div class="entry-meta">${a.date}</div>
+      <h2>${a.title}</h2>
+      ${a.html}
+    `;
+    document.title = a.title + " — Quiet Light";
+    return true;
+  }
+
+  function route(){
+    const hash = decodeURIComponent(location.hash.replace('#',''));
+    if(hash && renderArticle(hash)){
+      document.body.classList.add('reading');
+      window.scrollTo(0,0);
+    } else {
+      document.body.classList.remove('reading');
+      document.title = "Quiet Light — Words for Hard Seasons";
+      window.scrollTo(0,0);
+    }
+  }
+
+  backLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    history.pushState(null, '', location.pathname + location.search);
+    route();
+  });
+
+  window.addEventListener('hashchange', route);
+  renderList();
+  route();
+</script>
+
+</body>
+    </html>
